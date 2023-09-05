@@ -1,11 +1,12 @@
 package napredno.programiranje.domain;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public interface GenericEntity {
+public interface GenericEntity extends Serializable {
 
-String getTableName();
+	String getTableName();
     
     String getInsertColumns();
     
