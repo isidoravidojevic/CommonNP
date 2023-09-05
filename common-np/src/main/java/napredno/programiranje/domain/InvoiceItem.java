@@ -99,7 +99,7 @@ public class InvoiceItem implements GenericEntity{
 
     @Override
     public String getJoinText() {
-        return " JOIN invoice ON invoiceitem.invoiceNumber = invoice.invoiceNumber JOIN product ON invoiceitem.productID = product.productID JOIN customer ON invoice.customerID = customer.customerID JOIN producer ON product.producerID = producer.producerID";
+        return " JOIN invoice ON invoiceitem.invoiceNumber = invoice.invoiceNumber JOIN product ON invoiceitem.productID = product.productID JOIN customer ON invoice.customerID = customer.customerID JOIN producer ON product.producerID = producer.producerID JOIN city ON customer.cityID = city.cityID";
     }
 
     @Override

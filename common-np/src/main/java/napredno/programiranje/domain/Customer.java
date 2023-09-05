@@ -114,7 +114,7 @@ public class Customer implements GenericEntity{
 
     @Override
     public String getUpdateValues() {
-        return "customerName = '"+ customerName +"' , address= '"+address+"', VATnumber= '"+VATnumber+"' ,companyNumber= '"+companyNumber + "'";
+        return "customerName = '"+ customerName +"' , address= '"+address+"', VATnumber= '"+VATnumber+"' ,companyNumber= '"+companyNumber + "',cityID= " + city.getCityID();
     }
 
     @Override
