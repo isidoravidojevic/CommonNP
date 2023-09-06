@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Predstavlja grad iz koga je kupac. Grad ima identifikator, naziv i poštanski broj.
- * Klasa implementira GenericEntity interfejs i omogućava rad sa bazom podataka.
+ * Predstavlja grad iz koga je kupac. Grad ima identifikator, naziv i postanski broj.
+ * Klasa implementira GenericEntity interfejs i omogucava rad sa bazom podataka.
  * 
  * @author Isidora Vidojevic
  */
@@ -23,7 +23,7 @@ public class City implements GenericEntity {
 	private String cityName;
 	
 	/**
-	 * Poštanski broj grada kao String.
+	 * Postanski broj grada kao String.
 	 */
 	private String postalCode;
 	
@@ -36,9 +36,9 @@ public class City implements GenericEntity {
 	/**
      * Konstruktor koji inicijalizuje objekat klase City sa zadatim vrednostima.
      *
-     * @param cityID, ID grada
-     * @param cityName, naziv grada
-     * @param postalCode, poštanski broj grada
+     * @param cityID ID grada
+     * @param cityName naziv grada
+     * @param postalCode postanski broj grada
      */
 	public City(long cityID, String cityName, String postalCode) {
 		this.cityID = cityID;
@@ -47,7 +47,7 @@ public class City implements GenericEntity {
 	}
 	
 	/**
-     * Vraća ID grada.
+     * Vraca ID grada.
      *
      * @return ID grada kao long
      */
@@ -58,14 +58,14 @@ public class City implements GenericEntity {
 	/**
      * Postavlja ID grada na zadatu vrednost.
      *
-     * @param cityID, ID grada
+     * @param cityID ID grada
      */
 	public void setCityID(long cityID) {
 		this.cityID = cityID;
 	}
 
 	/**
-     * Vraća naziv grada.
+     * Vraca naziv grada.
      *
      * @return naziv grada
      */
@@ -76,25 +76,25 @@ public class City implements GenericEntity {
 	/**
      * Postavlja naziv grada na zadatu vrednost.
      *
-     * @param cityName, naziv grada
+     * @param cityName naziv grada
      */
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
 
 	/**
-     * Vraća poštanski broj grada.
+     * Vraca postanski broj grada.
      *
-     * @return poštanski broj grada
+     * @return postanski broj grada
      */
 	public String getPostalCode() {
 		return postalCode;
 	}
 
 	/**
-     * Postavlja poštanski broj grada na zadatu vrednost.
+     * Postavlja postanski broj grada na zadatu vrednost.
      *
-     * @param postalCode, poštanski broj grada
+     * @param postalCode postanski broj grada
      */
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
