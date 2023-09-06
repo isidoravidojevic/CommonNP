@@ -128,8 +128,37 @@ public class User implements GenericEntity{
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    /**
+	 * Vraca hash izracunat na osnovu sifre i korisnickog imena
+	 * 
+	 * @return hash code na osnovu sifre i korisnickog imena
+	 */
+    @Override
+	public int hashCode() {
+		return Objects.hash(password, username);
+	}
 
     /**
+	 * Poredi dva korisnika po sifri i korisnickom imenu.
+	 * 
+	 * @param obj drugi korisnik.
+	 * 
+	 * @return true ako su password i username isti, a false inace
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(password, other.password) && Objects.equals(username, other.username);
+	}
+
+	/**
      * {@inheritDoc}
      */
 	@Override

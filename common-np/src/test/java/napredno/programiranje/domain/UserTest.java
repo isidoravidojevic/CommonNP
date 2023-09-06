@@ -12,6 +12,8 @@ import java.sql.SQLSyntaxErrorException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class UserTest {
 
@@ -135,6 +137,24 @@ class UserTest {
 	    preparedStatement.setString(1, "isidora");
 
 	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
+	}
+	
+	@ParameterizedTest
+	@CsvSource ({
+		"isidora, dora, isidora, dora, true",
+		"isidora, masa, isidora, dora, false",
+		"marija, dora, isidora, dora, false",
+		"marija, masa, isidora, dora, false"
+	})
+	void testEquals(String un1, String p1, String un2, String p2, boolean equals) {
+		u.setUsername(un1);
+		u.setPassword(p1);
+		
+		User u2 = new User();
+		u2.setUsername(un2);
+		u2.setPassword(p2);
+		
+		assertEquals(equals, u.equals(u2));
 	}
 
 }
