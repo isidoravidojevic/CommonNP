@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.AfterEach;
@@ -204,5 +205,12 @@ class InvoiceTest {
 	    assertEquals("91827364", ((Invoice) entity).getCustomer().getCompanyNumber());
 	}
 
-	
+	@Test
+	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM invoices JOIN customer ON invoice.customerID = customer.customerID JOIN city ON customer.cityID = city.cityID WHERE invoiceNumber = ?");
+	    preparedStatement.setLong(1, 23);
+
+	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
+	}
 }

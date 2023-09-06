@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -131,4 +132,12 @@ class CityTest {
 	    assertEquals("37230", ((City) entity).getPostalCode());
 	}
 
+	@Test
+	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM cities WHERE cityID = ?");
+	    preparedStatement.setLong(1, 1);
+
+	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
+	}
 }

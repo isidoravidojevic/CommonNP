@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -177,4 +178,12 @@ class InvoiceItemTest {
 	    assertEquals(100000.0, ((InvoiceItem) entity).getProduct().getSellingPrice(), 0.001);
 	}
 
+	@Test
+	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM invoiceit JOIN invoice ON invoiceitem.invoiceNumber = invoice.invoiceNumber JOIN product ON invoiceitem.productID = product.productID JOIN customer ON invoice.customerID = customer.customerID JOIN producer ON product.producerID = producer.producerID JOIN city ON customer.cityID = city.cityID WHERE number = ?");
+	    preparedStatement.setLong(1, 14);
+
+	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
+	}
 }

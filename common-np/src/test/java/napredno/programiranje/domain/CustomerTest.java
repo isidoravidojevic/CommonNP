@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -165,6 +166,15 @@ class CustomerTest {
 	    assertEquals(2L, ((Customer) entity).getCity().getCityID());
 	    assertEquals("Beograd", ((Customer) entity).getCity().getCityName());
 	    assertEquals("11000", ((Customer) entity).getCity().getPostalCode());
+	}
+	
+	@Test
+	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM custome JOIN city ON customer.cityID = city.cityID WHERE customerID = ?");
+	    preparedStatement.setLong(1, 15);
+
+	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
 	}
 
 }

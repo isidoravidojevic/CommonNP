@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -127,8 +128,13 @@ class UserTest {
 	}
 
 
+	@Test
+	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE usernames = ?");
+	    preparedStatement.setString(1, "isidora");
 
+	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
+	}
 
-
-	
 }
