@@ -240,8 +240,8 @@ public class Product implements GenericEntity {
      */
     @Override
     public String getUpdateValues() {
-        return "productName = '" + productName + "' , quantity= " + quantity + ", measurementUnit= '" + measurementUnit + "' ,purchasePrice=" + purchasePrice
-                + ", sellingPrice= " + sellingPrice + ", producerID= " + producer.getProducerID();
+        return "productName= '" + productName + "',quantity= " + quantity + ",measurementUnit= '" + measurementUnit + "',purchasePrice= " + purchasePrice
+                + ",sellingPrice= " + sellingPrice + ",producerID= " + producer.getProducerID();
     }
 
     /**

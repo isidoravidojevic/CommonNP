@@ -216,7 +216,7 @@ public class Customer implements GenericEntity{
      */
     @Override
     public String getUpdateValues() {
-        return "customerName = '"+ customerName +"' , address= '"+address+"', VATnumber= '"+VATnumber+"' ,companyNumber= '"+companyNumber + "',cityID= " + city.getCityID();
+        return "customerName='"+ customerName +"',address='"+address+"',VATnumber='"+VATnumber+"',companyNumber='"+companyNumber + "',cityID=" + city.getCityID();
     }
 
     /**

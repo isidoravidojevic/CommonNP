@@ -337,7 +337,7 @@ public class Invoice implements GenericEntity{
      */
     @Override
     public String getSelectedText() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     /**
@@ -345,7 +345,7 @@ public class Invoice implements GenericEntity{
      */
     @Override
     public String getID() {
-        return "invoice.invoiceNumber = " + invoiceNumber;
+        return "invoice.invoiceNumber=" + invoiceNumber;
     }
 
     /**

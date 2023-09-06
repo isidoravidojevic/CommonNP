@@ -132,7 +132,7 @@ public class InvoiceReceptionType implements GenericEntity{
      */
     @Override
     public void setId(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     /**
@@ -140,7 +140,7 @@ public class InvoiceReceptionType implements GenericEntity{
      */
     @Override
     public String getUpdateValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     /**
@@ -156,7 +156,7 @@ public class InvoiceReceptionType implements GenericEntity{
      */
     @Override
     public String getSelectedText() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     /**
@@ -164,7 +164,7 @@ public class InvoiceReceptionType implements GenericEntity{
      */
     @Override
     public String getID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "";
     }
 
     /**
