@@ -51,10 +51,10 @@ public class User implements GenericEntity{
      * 
      */
     public User(String firstName, String lastName, String username, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
+        setFirstName(firstName);
+        setLastName(lastName);
+        setUsername(username);
+        setPassword(password);
     }
 	
     /**

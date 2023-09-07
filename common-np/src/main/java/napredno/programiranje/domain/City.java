@@ -41,9 +41,9 @@ public class City implements GenericEntity {
      * @param postalCode postanski broj grada
      */
 	public City(long cityID, String cityName, String postalCode) {
-		this.cityID = cityID;
-		this.cityName = cityName;
-		this.postalCode = postalCode;
+		setCityID(cityID);
+		setCityName(cityName);
+		setPostalCode(postalCode);
 	}
 	
 	/**

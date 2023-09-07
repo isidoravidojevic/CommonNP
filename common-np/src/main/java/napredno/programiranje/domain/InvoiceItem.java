@@ -62,12 +62,12 @@ public class InvoiceItem implements GenericEntity{
      * @param product Proizvod na koji se odnosi stavka
      */
     public InvoiceItem(long number, Invoice invoice, int quantity, String description, double itemPrice, Product product) {
-        this.number = number;
-        this.invoice = invoice;
-        this.quantity = quantity;
-        this.description = description;
-        this.itemPrice = itemPrice;
-        this.product = product;
+        setNumber(number);
+        setInvoice(invoice);
+        setQuantity(quantity);
+        setDescription(description);
+        setItemPrice(itemPrice);
+        setProduct(product);
     }
 
     

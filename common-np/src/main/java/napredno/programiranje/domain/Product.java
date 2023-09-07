@@ -68,13 +68,13 @@ public class Product implements GenericEntity {
      */
 	public Product(long productID, String productName, int quantity, String measurementUnit, double purchasePrice,
 			double sellingPrice, Producer producer) {
-		this.productID = productID;
-		this.productName = productName;
-		this.quantity = quantity;
-		this.measurementUnit = measurementUnit;
-		this.purchasePrice = purchasePrice;
-		this.sellingPrice = sellingPrice;
-		this.producer = producer;
+		setProductID(productID);
+		setProductName(productName);
+		setQuantity(quantity);
+		setMeasurementUnit(measurementUnit);
+		setPurchasePrice(purchasePrice);
+		setSellingPrice(sellingPrice);
+		setProducer(producer);
 	}
 
 	/**

@@ -90,16 +90,16 @@ public class Invoice implements GenericEntity{
      * @param customer Kupac za koga je izdata faktura
      */
     public Invoice(long invoiceNumber, boolean processed, boolean canceled, LocalDate issueDate, double VAT, double rebate, double accountingBasis, BigDecimal totalValue, LocalDate paymentDeadline, Customer customer) {
-        this.invoiceNumber = invoiceNumber;
-        this.processed = processed;
-        this.canceled = canceled;
-        this.issueDate = issueDate;
-        this.VAT = VAT;
-        this.rebate = rebate;
-        this.accountingBasis = accountingBasis;
-        this.totalValue = totalValue;
-        this.paymentDeadline = paymentDeadline;
-        this.customer = customer;
+        setInvoiceNumber(invoiceNumber);
+        setProcessed(processed);
+        setCanceled(canceled);
+        setIssueDate(issueDate);
+        setVAT(VAT);
+        setRebate(rebate);
+        setAccountingBasis(accountingBasis);
+        setTotalValue(totalValue);
+        setPaymentDeadline(paymentDeadline);
+        setCustomer(customer);
     }
     
     /**

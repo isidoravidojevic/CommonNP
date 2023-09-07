@@ -63,12 +63,12 @@ public class Customer implements GenericEntity{
      * @param city grad u kojem se nalazi kupac
      */
     public Customer(long customerID, String customerName, String address, String VATnumber, String companyNumber, City city) {
-        this.customerID = customerID;
-        this.customerName = customerName;
-        this.address = address;
-        this.VATnumber = VATnumber;
-        this.companyNumber = companyNumber;
-        this.city = city;
+        setCustomerID(customerID);
+        setCustomerName(customerName);
+        setAddress(address);
+        setVATnumber(VATnumber);
+        setCompanyNumber(companyNumber);
+        setCity(city);
     }
 
     /**

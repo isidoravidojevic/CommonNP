@@ -44,9 +44,9 @@ public class InvoiceReceptionType implements GenericEntity{
      * @param invoiceReceptionMeans Sredstvo prijema fakture
      */
     public InvoiceReceptionType(Customer customer, Invoice invoice, String invoiceReceptionMeans) {
-        this.customer = customer;
-        this.invoice = invoice;
-        this.invoiceReceptionMeans = invoiceReceptionMeans;
+        setCustomer(customer);
+        setInvoice(invoice);
+        setInvoiceReceptionMeans(invoiceReceptionMeans);
     }
 
     /**

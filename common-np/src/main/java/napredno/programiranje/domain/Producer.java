@@ -37,8 +37,8 @@ public class Producer implements GenericEntity {
      * @param producerName naziv proizvodjaca
      */
 	public Producer(long producerID, String producerName) {
-		this.producerID = producerID;
-		this.producerName = producerName;
+		setProducerID(producerID);
+		setProducerName(producerName);
 	}
 
 	/**
