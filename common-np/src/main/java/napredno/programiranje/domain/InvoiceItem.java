@@ -129,17 +129,26 @@ public class InvoiceItem implements GenericEntity{
      * Postavlja redni broj stavke na zadatu vrednost.
      *
      * @param number Redni broj stavke
+     * @throws IllegalArgumentException Ako je number manji ili jednak 0.
      */
     public void setNumber(long number) {
-        this.number = number;
+    	if (number > 0) {
+            this.number = number;
+        } else {
+            throw new IllegalArgumentException("Redni broj stavke ne može biti broj manji ili jednak 0.");
+        }
     }
 
     /**
      * Postavlja fakturu na koju se stavka odnosi na zadatu vrednost.
      *
      * @param invoice Faktura na koju se odnosi stavka
+     * @throws IllegalArgumentException Ako je invoice null
      */
     public void setInvoice(Invoice invoice) {
+    	if (invoice == null) {
+	        throw new IllegalArgumentException("Faktura ne sme imati null vrednost.");
+	    }
         this.invoice = invoice;
     }
 
@@ -147,35 +156,54 @@ public class InvoiceItem implements GenericEntity{
      * Postavlja kolicinu proizvoda u okviru stavke na zadatu vrednost.
      *
      * @param quantity Kolicina proizvoda u okviru stavke
+     * @throws IllegalArgumentException Ako je quantity manji ili jednak 0.
      */
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    	if (quantity > 0) {
+            this.quantity = quantity;
+        } else {
+            throw new IllegalArgumentException("Količina ne može biti negativna vrednost ili 0.");
+        }
     }
 
     /**
      * Postavlja opis stavke na zadatu vrednost.
      *
      * @param description Opis stavke
+     * @throws IllegalArgumentException Ako je description null ili prazan String
      */
     public void setDescription(String description) {
-        this.description = description;
+    	if (description != null && !description.isEmpty()) {
+            this.description = description;
+        } else {
+            throw new IllegalArgumentException("Opis stavke ne sme biti null ili prazan String.");
+        }
     }
 
     /**
      * Postavlja cenu stavke na zadatu vrednost.
      *
      * @param itemPrice Cena stavke
+     * @throws IllegalArgumentException Ako je cena stavke manja ili jednaka 0
      */
     public void setItemPrice(double itemPrice) {
-        this.itemPrice = itemPrice;
+    	if (itemPrice > 0) {
+            this.itemPrice = itemPrice;
+        } else {
+            throw new IllegalArgumentException("Cena stavke ne sme biti negativna vrednost ili 0.");
+        }
     }
 
     /**
      * Postavlja proizvod na koji se stavka odnosi na zadatu vrednost.
      *
      * @param product Proizvod na koji se stavka odnosi
+     * @throws IllegalArgumentException Ako je product null
      */
     public void setProduct(Product product) {
+    	if (product == null) {
+	        throw new IllegalArgumentException("Proizvod ne sme imati null vrednost.");
+	    }
         this.product = product;
     }
     

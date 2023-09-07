@@ -120,45 +120,70 @@ public class Customer implements GenericEntity{
      * Postavlja ID kupca na zadatu vrednost.
      *
      * @param customerID ID kupca
+     * @throws IllegalArgumentException Ukoliko je zadati ID manji ili jednak 0.
      */
     public void setCustomerID(long customerID) {
-        this.customerID = customerID;
+    	if (customerID > 0) {
+            this.customerID = customerID;
+        } else {
+            throw new IllegalArgumentException("Neispravan format ID-ja kupca.");
+        }
     }
 
     /**
      * Postavlja naziv kupca na zadatu vrednost.
      *
      * @param customerName Naziv kupca
+     * @throws IllegalArgumentException Ako je customerName null ili krace od 3 karaktera.
      */
     public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    	if (customerName != null && customerName.length() >= 3) {
+            this.customerName = customerName;
+        } else {
+            throw new IllegalArgumentException("Neispravan format imena kupca.");
+        }
     }
 
     /**
      * Postavlja adresu kupca na zadatu vrednost.
      *
      * @param address Adresa kupca
+     * @throws IllegalArgumentException Ako je address null ili kraca od 5 karaktera.
      */
     public void setAddress(String address) {
-        this.address = address;
+    	if (address != null && address.length() >= 5) {
+            this.address = address;
+        } else {
+            throw new IllegalArgumentException("Neispravan format adrese kupca.");
+        }
     }
 
     /**
      * Postavlja PIB (Poreski identifikacioni broj) kupca na zadatu vrednost.
      *
      * @param VATnumber PIB kupca
+     * @throws IllegalArgumentException Ako je VATnumber null, ne sadrzi tacno 9 karaktera i ne sadrzi samo cifre.
      */
     public void setVATnumber(String VATnumber) {
-        this.VATnumber = VATnumber;
+    	if (VATnumber != null && VATnumber.length() == 9 && VATnumber.matches("\\d+")) {
+            this.VATnumber = VATnumber;
+        } else {
+            throw new IllegalArgumentException("Neispravan format PIB-a kupca.");
+        }
     }
 
     /**
      * Postavlja maticni broj preduzeca kupca na zadatu vrednost.
      *
      * @param companyNumber Maticni broj preduzeca kupca
+     * @throws IllegalArgumentException Ako je companyNumber null, ne sadrzi tacno 8 karaktera i ne sadrzi samo cifre.
      */
     public void setCompanyNumber(String companyNumber) {
-        this.companyNumber = companyNumber;
+    	if (companyNumber != null && companyNumber.length() == 8 && companyNumber.matches("\\d+")) {
+            this.companyNumber = companyNumber;
+        } else {
+            throw new IllegalArgumentException("Neispravan format PDV broja kupca.");
+        }
     }
     
     /**
@@ -174,9 +199,13 @@ public class Customer implements GenericEntity{
      * Postavlja grad za kupca.
      *
      * @param city Grad kupca
+     * @throws IllegalArgumentException Ako je city null
      */
 	public void setCity(City city) {
-		this.city = city;
+		if (city == null) {
+	        throw new IllegalArgumentException("Grad ne sme imati null vrednost.");
+	    }
+	    this.city = city;
 	}
 
 	/**

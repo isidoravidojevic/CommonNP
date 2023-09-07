@@ -59,9 +59,14 @@ public class City implements GenericEntity {
      * Postavlja ID grada na zadatu vrednost.
      *
      * @param cityID ID grada
+     * @throws IllegalArgumentException Ako je cityID manji ili jednak 0.
      */
 	public void setCityID(long cityID) {
-		this.cityID = cityID;
+		if (cityID > 0) {
+	        this.cityID = cityID;
+	    } else {
+	        throw new IllegalArgumentException("City ID mora biti broj veci od 0.");
+	    }
 	}
 
 	/**
@@ -74,13 +79,19 @@ public class City implements GenericEntity {
 	}
 
 	/**
-     * Postavlja naziv grada na zadatu vrednost.
-     *
-     * @param cityName naziv grada
-     */
+	 * Postavlja naziv grada.
+	 * 
+	 * @param cityName Naziv grada
+	 * @throws IllegalArgumentException Ako je cityName null ili prazan string.
+	 */
 	public void setCityName(String cityName) {
-		this.cityName = cityName;
+	    if (cityName != null && !cityName.isEmpty()) {
+	        this.cityName = cityName;
+	    } else {
+	        throw new IllegalArgumentException("Naziv grada ne može biti null ili prazan string.");
+	    }
 	}
+
 
 	/**
      * Vraca postanski broj grada.
@@ -95,9 +106,14 @@ public class City implements GenericEntity {
      * Postavlja postanski broj grada na zadatu vrednost.
      *
      * @param postalCode postanski broj grada
+     * @throws IllegalArgumentException Ukoliko je zadati postanski broj null ili nema tacno 5 karaktera.
      */
 	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
+		if (postalCode != null && postalCode.length() == 5) {
+	        this.postalCode = postalCode;
+	    } else {
+	        throw new IllegalArgumentException("Neispravan format poštanskog broja.");
+	    }
 	}
 
 	/**

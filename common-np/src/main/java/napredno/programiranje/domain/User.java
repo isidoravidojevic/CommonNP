@@ -97,36 +97,56 @@ public class User implements GenericEntity{
      * Postavlja ime korisnika na zadatu vrednost.
      *
      * @param firstName Ime korisnika
+     * @throws IllegalArgumentException Ako je firstName null ili prazan String
      */
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    	 if (firstName != null && !firstName.isEmpty()) {
+    	        this.firstName = firstName;
+    	    } else {
+    	        throw new IllegalArgumentException("Ime korisnika ne sme biti null ili prazan String.");
+    	    }
     }
 
     /**
      * Postavlja prezime korisnika na zadatu vrednost.
      *
      * @param lastName Prezime korisnika
+     * @throws IllegalArgumentException Ako je lastName null ili prazan String
      */
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+    	if (lastName != null && !lastName.isEmpty()) {
+            this.lastName = lastName;
+        } else {
+            throw new IllegalArgumentException("Prezime korisnika ne sme biti null ili prazan String.");
+        }
     }
 
     /**
      * Postavlja korisnicko ime korisnika na zadatu vrednost.
      *
      * @param username Korisnicko ime korisnika
+     * @throws IllegalArgumentException Ako je username null ili prazan String
      */
     public void setUsername(String username) {
-        this.username = username;
+    	if (username != null && !username.isEmpty()) {
+            this.username = username;
+        } else {
+            throw new IllegalArgumentException("Korisničko ime korisnika ne sme biti null ili prazan String.");
+        }
     }
 
     /**
      * Postavlja sifru korisnika na zadatu vrednost.
      *
      * @param password Sifra korisnika
+     * @throws IllegalArgumentException Ako je password null ili prazan String
      */
     public void setPassword(String password) {
-        this.password = password;
+    	if (password != null && !password.isEmpty()) {
+            this.password = password;
+        } else {
+            throw new IllegalArgumentException("Šifra korisnika ne sme biti null ili prazan String.");
+        }
     }
 
     /**
