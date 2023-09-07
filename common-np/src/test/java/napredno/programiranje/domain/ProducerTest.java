@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 class ProducerTest {
 
 	Producer p;
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		p = new Producer();
@@ -34,21 +34,41 @@ class ProducerTest {
 	}
 
 	@Test
+	public void testSetProducerIDInvalidZero() {
+		assertThrows(IllegalArgumentException.class, () -> p.setProducerID(0));
+	}
+
+	@Test
+	public void testSetProducerIDInvalidNegative() {
+		assertThrows(IllegalArgumentException.class, () -> p.setProducerID(-456));
+	}
+
+	@Test
 	void testSetProducerName() {
 		p.setProducerName("Apple");
 		assertEquals("Apple", p.getProducerName());
 	}
-	
+
+	@Test
+	public void testSetProducerNameInvalidNull() {
+		assertThrows(IllegalArgumentException.class, () -> p.setProducerName(null));
+	}
+
+	@Test
+	public void testSetProducerNameInvalidEmpty() {
+		assertThrows(IllegalArgumentException.class, () -> p.setProducerName(""));
+	}
+
 	@Test
 	public void testGetTableName() {
 		assertEquals("producer", p.getTableName());
 	}
-	
+
 	@Test
 	public void testGetInsertColumns() {
 		assertEquals("producerName", p.getInsertColumns());
 	}
-	
+
 	@Test
 	public void testGetInsertValues() {
 		p.setProducerName("Apple");
@@ -56,7 +76,7 @@ class ProducerTest {
 
 		assertEquals(expected, p.getInsertValues());
 	}
-	
+
 	@Test
 	public void testSetId() {
 		long expectedId = 42;
@@ -65,7 +85,7 @@ class ProducerTest {
 
 		assertEquals(expectedId, actualId);
 	}
-	
+
 	@Test
 	public void testGetUpdateValues() {
 		p.setProducerName("Samsung");
@@ -75,7 +95,7 @@ class ProducerTest {
 
 		assertEquals(expectedUpdateValues, actualUpdateValues);
 	}
-	
+
 	@Test
 	public void testGetJoinText() {
 		String expectedJoinText = "";
@@ -83,7 +103,7 @@ class ProducerTest {
 
 		assertEquals(expectedJoinText, actualJoinText);
 	}
-	
+
 	@Test
 	public void testGetSelectedText() {
 		String expectedSelectedText = "";
@@ -91,45 +111,47 @@ class ProducerTest {
 
 		assertEquals(expectedSelectedText, actualSelectedText);
 	}
-	
+
 	@Test
-    public void testGetID() {
-        p.setProducerID(42); 
-        
-        String expectedID = "producer.producerID=42";
-        String actualID = p.getID(); 
-        
-        assertEquals(expectedID, actualID); 
-    }
-	
-	@Test
-	public void testGetEntity() throws SQLException {
-	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
-	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM producer WHERE producerID = ?");
-	    preparedStatement.setLong(1, 1);
+	public void testGetID() {
+		p.setProducerID(42);
 
-	    ResultSet resultSet = preparedStatement.executeQuery();
+		String expectedID = "producer.producerID=42";
+		String actualID = p.getID();
 
-	    Producer producer = new Producer();
-	    GenericEntity entity = null;
-
-	    if (resultSet.next()) {
-	        entity = producer.getEntity(resultSet);
-	    }
-
-	    assertNotNull(entity);
-
-	    assertEquals(1L, ((Producer) entity).getProducerID());
-	    assertEquals("Apple", ((Producer) entity).getProducerName());
+		assertEquals(expectedID, actualID);
 	}
 
 	@Test
+<<<<<<< HEAD
 	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_napredno_programiranje", "root", "");
 	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM producer WHERE producerIDs = ?");
 	    preparedStatement.setLong(1, 1);
 
 	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
+=======
+	public void testGetEntity() throws SQLException {
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root",
+				"");
+		PreparedStatement preparedStatement = connection
+				.prepareStatement("SELECT * FROM producer WHERE producerID = ?");
+		preparedStatement.setLong(1, 1);
+
+		ResultSet resultSet = preparedStatement.executeQuery();
+
+		Producer producer = new Producer();
+		GenericEntity entity = null;
+
+		if (resultSet.next()) {
+			entity = producer.getEntity(resultSet);
+		}
+
+		assertNotNull(entity);
+
+		assertEquals(1L, ((Producer) entity).getProducerID());
+		assertEquals("Apple", ((Producer) entity).getProducerName());
+>>>>>>> refs/remotes/origin/test-domain-classes
 	}
 
 }

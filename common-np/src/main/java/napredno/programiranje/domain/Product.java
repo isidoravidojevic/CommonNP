@@ -68,13 +68,13 @@ public class Product implements GenericEntity {
      */
 	public Product(long productID, String productName, int quantity, String measurementUnit, double purchasePrice,
 			double sellingPrice, Producer producer) {
-		this.productID = productID;
-		this.productName = productName;
-		this.quantity = quantity;
-		this.measurementUnit = measurementUnit;
-		this.purchasePrice = purchasePrice;
-		this.sellingPrice = sellingPrice;
-		this.producer = producer;
+		setProductID(productID);
+		setProductName(productName);
+		setQuantity(quantity);
+		setMeasurementUnit(measurementUnit);
+		setPurchasePrice(purchasePrice);
+		setSellingPrice(sellingPrice);
+		setProducer(producer);
 	}
 
 	/**
@@ -90,9 +90,14 @@ public class Product implements GenericEntity {
 	 * Postavlja identifikator proizvoda na zadatu vrednost.
 	 *
 	 * @param productID Identifikator proizvoda
+	 * @throws IllegalArgumentException Ako je productID manji ili jednak nuli
 	 */
 	public void setProductID(long productID) {
-		this.productID = productID;
+		if (productID > 0) {
+	        this.productID = productID;
+	    } else {
+	        throw new IllegalArgumentException("Identifikator proizvoda mora biti veći od nule.");
+	    }
 	}
 
 	/**
@@ -108,9 +113,14 @@ public class Product implements GenericEntity {
 	 * Postavlja naziv proizvoda na zadatu vrednost.
 	 *
 	 * @param productName Naziv proizvoda
+	 * @throws IllegalArgumentException Ako je productName null ili prazan String
 	 */
 	public void setProductName(String productName) {
-		this.productName = productName;
+		if (productName != null && !productName.isEmpty()) {
+	        this.productName = productName;
+	    } else {
+	        throw new IllegalArgumentException("Naziv proizvoda ne sme biti null ili prazan.");
+	    }
 	}
 
 	/**
@@ -126,9 +136,14 @@ public class Product implements GenericEntity {
 	 * Postavlja kolicinu proizvoda na zadatu vrednost.
 	 *
 	 * @param quantity Kolicina proizvoda
+	 * @throws IllegalArgumentException Ako je quantity manja od 0
 	 */
 	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+		if (quantity >= 0) {
+	        this.quantity = quantity;
+	    } else {
+	        throw new IllegalArgumentException("Količina proizvoda ne sme biti manja od 0.");
+	    }
 	}
 
 	/**
@@ -144,9 +159,14 @@ public class Product implements GenericEntity {
 	 * Postavlja jedinicu mere proizvoda na zadatu vrednost.
 	 *
 	 * @param measurementUnit Jedinica mere proizvoda
+	 * @throws IllegalArgumentException Ako je measurementUnit null ili prazan String
 	 */
 	public void setMeasurementUnit(String measurementUnit) {
-		this.measurementUnit = measurementUnit;
+		if (measurementUnit != null && !measurementUnit.isEmpty()) {
+	        this.measurementUnit = measurementUnit;
+	    } else {
+	        throw new IllegalArgumentException("Jedinica mere proizvoda ne sme biti null ili prazan String.");
+	    }
 	}
 
 	/**
@@ -162,15 +182,21 @@ public class Product implements GenericEntity {
 	 * Postavlja nabavnu cenu proizvoda na zadatu vrednost.
 	 *
 	 * @param purchasePrice Nabavna cena proizvoda
+	 * @throws IllegalArgumentException Ako je purchasePrice manja ili jednaka 0
 	 */
 	public void setPurchasePrice(double purchasePrice) {
-		this.purchasePrice = purchasePrice;
+		if (purchasePrice > 0) {
+	        this.purchasePrice = purchasePrice;
+	    } else {
+	        throw new IllegalArgumentException("Nabavna cena proizvoda ne sme biti negativna vrednost ili 0.");
+	    }
 	}
 
 	/**
 	 * Vraca prodajnu proizvoda.
 	 *
 	 * @return Prodajna cena proizvoda
+	 * 
 	 */
 	public double getSellingPrice() {
 		return sellingPrice;
@@ -180,9 +206,14 @@ public class Product implements GenericEntity {
 	 * Postavlja prodajnu cenu proizvoda na zadatu vrednost.
 	 *
 	 * @param sellingPrice Prodajna cena proizvoda
+	 * @throws IllegalArgumentException Ako je sellingPrice manja ili jednaka 0
 	 */
 	public void setSellingPrice(double sellingPrice) {
-		this.sellingPrice = sellingPrice;
+		if (sellingPrice > 0) {
+	        this.sellingPrice = sellingPrice;
+	    } else {
+	        throw new IllegalArgumentException("Prodajna cena proizvoda ne sme biti negativna vrednost ili 0.");
+	    }
 	}
 
 	/**
@@ -198,8 +229,12 @@ public class Product implements GenericEntity {
 	 * Postavlja proizvodjaca proizvoda na zadatu vrednost.
 	 *
 	 * @param producer Proizvodjac proizvoda
+	 * @throws IllegalArgumentException Ako je producer null
 	 */
 	public void setProducer(Producer producer) {
+		if (producer == null) {
+	        throw new IllegalArgumentException("Proizvodjac ne sme imati null vrednost.");
+	    }
 		this.producer = producer;
 	}
 

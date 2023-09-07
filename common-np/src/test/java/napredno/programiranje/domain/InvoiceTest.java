@@ -34,6 +34,16 @@ class InvoiceTest {
 		i.setInvoiceNumber(2);
 		assertEquals(2, i.getInvoiceNumber());
 	}
+	
+	@Test
+    public void testSetInvoiceNumberInvalidZero() {
+        assertThrows(IllegalArgumentException.class, () -> i.setInvoiceNumber(0)); 
+    }
+
+    @Test
+    public void testSetInvoiceNumberInvalidNegative() {
+        assertThrows(IllegalArgumentException.class, () -> i.setInvoiceNumber(-123));
+    }
 
 	@Test
 	void testSetProcessed() {
@@ -55,16 +65,45 @@ class InvoiceTest {
 	}
 
 	@Test
+    public void testSetIssueDateInvalidNull() {
+        assertThrows(IllegalArgumentException.class, () -> i.setIssueDate(null));
+    }
+	
+	@Test
 	void testSetVAT() {
 		i.setVAT(13.4);
 		assertEquals(13.4, i.getVAT());
 	}
 
 	@Test
+    public void testSetVATInvalidNegative() {
+        double invalidVAT = -5.0; 
+        assertThrows(IllegalArgumentException.class, () -> i.setVAT(invalidVAT));
+    }
+
+    @Test
+    public void testSetVATInvalidGreaterThan100() {
+        double invalidVAT = 120.0; 
+        assertThrows(IllegalArgumentException.class, () -> i.setVAT(invalidVAT));
+    }
+	
+	@Test
 	void testSetRebate() {
 		i.setRebate(4.5);
 		assertEquals(4.5, i.getRebate());
 	}
+	
+	@Test
+    public void testSetRebateInvalidNegative() {
+        double invalidRebate = -5.0; 
+        assertThrows(IllegalArgumentException.class, () -> i.setRebate(invalidRebate));
+    }
+
+    @Test
+    public void testSetRebateInvalidGreaterThan100() {
+        double invalidRebate = 120.0; 
+        assertThrows(IllegalArgumentException.class, () -> i.setRebate(invalidRebate));
+    }
 
 	@Test
 	void testSetAccountingBasis() {
@@ -73,12 +112,30 @@ class InvoiceTest {
 	}
 
 	@Test
+    public void testSetAccountingBasisInvalidNegative() {
+        double invalidAccountingBasis = -100.0; 
+        assertThrows(IllegalArgumentException.class, () -> i.setAccountingBasis(invalidAccountingBasis));
+    }
+	
+	@Test
 	public void testSetTotalValue() {
 		BigDecimal totalValue = new BigDecimal("100.50");
 		i.setTotalValue(totalValue);
 
 		assertEquals(totalValue, i.getTotalValue());
 	}
+	
+	@Test
+    public void testSetTotalValueInvalidNegative() {
+        BigDecimal invalidTotalValue = BigDecimal.valueOf(-100.0);
+        assertThrows(IllegalArgumentException.class, () -> i.setTotalValue(invalidTotalValue));
+    }
+
+    @Test
+    public void testSetTotalValueInvalidZero() {
+        BigDecimal invalidTotalValue = BigDecimal.ZERO;
+        assertThrows(IllegalArgumentException.class, () -> i.setTotalValue(invalidTotalValue));
+    }
 
 	@Test
 	void testSetPaymentDeadline() {
@@ -88,11 +145,21 @@ class InvoiceTest {
 	}
 
 	@Test
+    public void testSetPaymentDeadlineInvalidNull() {
+        assertThrows(IllegalArgumentException.class, () -> i.setPaymentDeadline(null));
+    }
+	
+	@Test
 	void testSetCustomer() {
 		Customer customer = new Customer();
 		i.setCustomer(customer);
 		assertEquals(customer, i.getCustomer());
 	}
+	
+	@Test
+    public void testSetCustomerInvalidNull() {
+        assertThrows(IllegalArgumentException.class, () -> i.setCustomer(null)); 
+    }
 
 	@Test
 	public void testGetTableName() {

@@ -37,8 +37,8 @@ public class Producer implements GenericEntity {
      * @param producerName naziv proizvodjaca
      */
 	public Producer(long producerID, String producerName) {
-		this.producerID = producerID;
-		this.producerName = producerName;
+		setProducerID(producerID);
+		setProducerName(producerName);
 	}
 
 	/**
@@ -54,9 +54,14 @@ public class Producer implements GenericEntity {
      * Postavlja ID proizvodjaca na zadatu vrednost.
      *
      * @param producerID ID proizvodjaca
+     * @throws IllegalArgumentException Ako je customerID manji ili jednak 0
      */
 	public void setProducerID(long producerID) {
-		this.producerID = producerID;
+		if (producerID > 0) {
+	        this.producerID = producerID;
+	    } else {
+	        throw new IllegalArgumentException("ID proizvođača mora biti veći od nule.");
+	    }
 	}
 
 	/**
@@ -72,9 +77,14 @@ public class Producer implements GenericEntity {
      * Postavlja naziv proizvodjaca na zadatu vrednost.
      *
      * @param producerName naziv proizvodjaca
+     * @throws IllegalArgumentException Ako je customerName null ili prazan String
      */
 	public void setProducerName(String producerName) {
-		this.producerName = producerName;
+		if (producerName != null && !producerName.isEmpty()) {
+	        this.producerName = producerName;
+	    } else {
+	        throw new IllegalArgumentException("Naziv proizvođača ne sme biti null ili prazan String.");
+	    }
 	}
 
 	/**
