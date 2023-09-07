@@ -123,14 +123,14 @@ class ProducerTest {
 	}
 
 	@Test
-<<<<<<< HEAD
 	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_napredno_programiranje", "root", "");
 	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM producer WHERE producerIDs = ?");
 	    preparedStatement.setLong(1, 1);
 
 	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
-=======
+	}
+	
 	public void testGetEntity() throws SQLException {
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root",
 				"");
@@ -151,7 +151,6 @@ class ProducerTest {
 
 		assertEquals(1L, ((Producer) entity).getProducerID());
 		assertEquals("Apple", ((Producer) entity).getProducerName());
->>>>>>> refs/remotes/origin/test-domain-classes
 	}
 
 }

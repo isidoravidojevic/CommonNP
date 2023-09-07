@@ -121,17 +121,7 @@ public class User implements GenericEntity {
 		}
 	}
 
-<<<<<<< HEAD
-    /**
-     * Postavlja sifru korisnika na zadatu vrednost.
-     *
-     * @param password Sifra korisnika
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    /**
+	/**
 	 * Vraca hash izracunat na osnovu sifre i korisnickog imena
 	 * 
 	 * @return hash code na osnovu sifre i korisnickog imena
@@ -139,7 +129,8 @@ public class User implements GenericEntity {
     @Override
 	public int hashCode() {
 		return Objects.hash(password, username);
-=======
+    }
+    
 	/**
 	 * Postavlja korisnicko ime korisnika na zadatu vrednost.
 	 *
@@ -152,11 +143,9 @@ public class User implements GenericEntity {
 		} else {
 			throw new IllegalArgumentException("Korisničko ime korisnika ne sme biti null ili prazan String.");
 		}
->>>>>>> refs/remotes/origin/test-domain-classes
 	}
 
-<<<<<<< HEAD
-    /**
+	/**
 	 * Poredi dva korisnika po sifri i korisnickom imenu.
 	 * 
 	 * @param obj drugi korisnik.
@@ -176,9 +165,8 @@ public class User implements GenericEntity {
 	}
 
 	/**
-     * {@inheritDoc}
-     */
-=======
+	 * {@inheritDoc}
+	 */
 	/**
 	 * Postavlja sifru korisnika na zadatu vrednost.
 	 *
@@ -196,7 +184,6 @@ public class User implements GenericEntity {
 	/**
 	 * {@inheritDoc}
 	 */
->>>>>>> refs/remotes/origin/test-domain-classes
 	@Override
 	public String getTableName() {
 		return "user";

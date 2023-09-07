@@ -239,7 +239,6 @@ class ProductTest {
 		assertEquals(1L, ((Product) entity).getProducer().getProducerID());
 		assertEquals("Apple", ((Product) entity).getProducer().getProducerName());
 	}
-<<<<<<< HEAD
 	
 	@Test
 	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
@@ -249,7 +248,7 @@ class ProductTest {
 
 	    assertThrows(SQLSyntaxErrorException.class, () -> preparedStatement.executeQuery());
 	}
-=======
 
->>>>>>> refs/remotes/origin/test-domain-classes
+
+
 }
