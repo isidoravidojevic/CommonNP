@@ -180,7 +180,7 @@ class InvoiceItemTest {
 
 	@Test
 	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_napredno_programiranje", "root", "");
 	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM invoiceit JOIN invoice ON invoiceitem.invoiceNumber = invoice.invoiceNumber JOIN product ON invoiceitem.productID = product.productID JOIN customer ON invoice.customerID = customer.customerID JOIN producer ON product.producerID = producer.producerID JOIN city ON customer.cityID = city.cityID WHERE number = ?");
 	    preparedStatement.setLong(1, 14);
 

@@ -151,7 +151,7 @@ class InvoiceReceptionTypeTest {
 
 	@Test
 	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_napredno_programiranje", "root", "");
 	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM invoicereception JOIN customer cu ON invoicereceptiontype.customerID = cu.customerID JOIN invoice ON invoicereceptiontype.invoiceNumber = invoice.invoiceNumber JOIN customer ON invoice.customerID = customer.customerID JOIN city ON cu.cityID = city.cityID WHERE invoicereceptiontype.customerID = ? AND invoicereceptiontype.invoiceNumber = ?");
 	    preparedStatement.setLong(1, 15);
 	    preparedStatement.setLong(2, 24);

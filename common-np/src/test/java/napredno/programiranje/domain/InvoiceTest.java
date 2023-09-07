@@ -207,7 +207,7 @@ class InvoiceTest {
 
 	@Test
 	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_napredno_programiranje", "root", "");
 	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM invoices JOIN customer ON invoice.customerID = customer.customerID JOIN city ON customer.cityID = city.cityID WHERE invoiceNumber = ?");
 	    preparedStatement.setLong(1, 23);
 

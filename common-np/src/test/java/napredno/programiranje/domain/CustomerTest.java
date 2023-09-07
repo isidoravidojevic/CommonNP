@@ -170,7 +170,7 @@ class CustomerTest {
 	
 	@Test
 	public void testGetEntityThrowsSqlSyntaxErrorException() throws SQLException {
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_napredno_programiranje", "root", "");
 	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM custome JOIN city ON customer.cityID = city.cityID WHERE customerID = ?");
 	    preparedStatement.setLong(1, 15);
 
