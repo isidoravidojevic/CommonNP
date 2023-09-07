@@ -36,17 +36,37 @@ class InvoiceReceptionTypeTest {
 	}
 	
 	@Test
+    public void testSetCustomerInvalidNull() {
+        assertThrows(IllegalArgumentException.class, () -> i.setCustomer(null)); 
+    }
+	
+	@Test
 	void testSetInvoice() {
 		Invoice invoice = new Invoice();
 		i.setInvoice(invoice);
 		assertEquals(invoice, i.getInvoice());
 	}
+	
+	@Test
+    public void testSetInvoiceInvalidNull() {
+        assertThrows(IllegalArgumentException.class, () -> i.setInvoice(null)); 
+    }
 
 	@Test
 	void testSetInvoiceReceptionMeans() {
 		i.setInvoiceReceptionMeans("LICNO");
 		assertEquals("LICNO", i.getInvoiceReceptionMeans());
 	}
+	
+	@Test
+    public void testSetInvoiceReceptionMeansInvalidNull() {
+        assertThrows(IllegalArgumentException.class, () -> i.setInvoiceReceptionMeans(null));
+    }
+
+    @Test
+    public void testSetInvoiceReceptionMeansInvalidEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> i.setInvoiceReceptionMeans("")); 
+    }
 	
 	@Test
 	public void testGetTableName() {

@@ -33,16 +33,46 @@ class CityTest {
 	}
 
 	@Test
+	public void testSetCityIDInvalid() {
+		assertThrows(IllegalArgumentException.class, () -> c.setCityID(0));
+	}
+
+	@Test
+	public void testSetCityIDNegative() {
+		assertThrows(IllegalArgumentException.class, () -> c.setCityID(-5));
+	}
+
+	@Test
 	void testSetCityName() {
 		c.setCityName("Aleksandrovac");
 		assertEquals("Aleksandrovac", c.getCityName());
 	}
 
 	@Test
+	public void testSetCityNameInvalidNull() {
+		assertThrows(IllegalArgumentException.class, () -> c.setCityName(null));
+	}
+	
+	@Test
+    public void testSetCityNameInvalidEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> c.setCityName(""));
+    }
+
+	@Test
 	void testSetPostalCode() {
 		c.setPostalCode("37230");
 		assertEquals("37230", c.getPostalCode());
 	}
+	
+	@Test
+    public void testSetPostalCodeInvalidNull() {
+        assertThrows(IllegalArgumentException.class, () -> c.setPostalCode(null));
+    }
+
+    @Test
+    public void testSetPostalCodeInvalidLength() {
+        assertThrows(IllegalArgumentException.class, () -> c.setPostalCode("1234")); 
+    }
 
 	@Test
 	public void testGetTableName() {
@@ -90,7 +120,7 @@ class CityTest {
 
 		assertEquals(expectedJoinText, actualJoinText);
 	}
-	
+
 	@Test
 	public void testGetSelectedText() {
 		String expectedSelectedText = "";
@@ -98,37 +128,38 @@ class CityTest {
 
 		assertEquals(expectedSelectedText, actualSelectedText);
 	}
-	
+
 	@Test
-    public void testGetID() {
-        c.setCityID(42); 
-        
-        String expectedID = "city.cityID=42";
-        String actualID = c.getID(); 
-        
-        assertEquals(expectedID, actualID); 
-    }
-	
+	public void testGetID() {
+		c.setCityID(42);
+
+		String expectedID = "city.cityID=42";
+		String actualID = c.getID();
+
+		assertEquals(expectedID, actualID);
+	}
+
 	@Test
 	public void testGetEntity() throws SQLException {
-	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root", "");
-	    PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM city WHERE cityID = ?");
-	    preparedStatement.setLong(1, 1);
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_seminarski_db", "root",
+				"");
+		PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM city WHERE cityID = ?");
+		preparedStatement.setLong(1, 1);
 
-	    ResultSet resultSet = preparedStatement.executeQuery();
+		ResultSet resultSet = preparedStatement.executeQuery();
 
-	    City city = new City();
-	    GenericEntity entity = null;
+		City city = new City();
+		GenericEntity entity = null;
 
-	    if (resultSet.next()) {
-	        entity = city.getEntity(resultSet);
-	    }
+		if (resultSet.next()) {
+			entity = city.getEntity(resultSet);
+		}
 
-	    assertNotNull(entity);
+		assertNotNull(entity);
 
-	    assertEquals(1L, ((City) entity).getCityID());
-	    assertEquals("Aleksandrovac", ((City) entity).getCityName());
-	    assertEquals("37230", ((City) entity).getPostalCode());
+		assertEquals(1L, ((City) entity).getCityID());
+		assertEquals("Aleksandrovac", ((City) entity).getCityName());
+		assertEquals("37230", ((City) entity).getPostalCode());
 	}
 
 }

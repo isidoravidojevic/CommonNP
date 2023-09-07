@@ -287,13 +287,13 @@ public class Invoice implements GenericEntity {
 	 * Postavlja ukupnu vrednost fakture na zadatu vrednost.
 	 *
 	 * @param totalValue Ukupna vrednost fakture
-	 * @throws IllegalArgumentException Ukoliko je totalValue negativan broj
+	 * @throws IllegalArgumentException Ukoliko je totalValue negativan broj ili 0
 	 */
 	public void setTotalValue(BigDecimal totalValue) {
-		if (totalValue.compareTo(BigDecimal.ZERO) >= 0) {
+		if (totalValue.compareTo(BigDecimal.ZERO) > 0) {
 	        this.totalValue = totalValue;
 	    } else {
-	        throw new IllegalArgumentException("Ukupna vrednost fakture ne može biti negativan broj.");
+	        throw new IllegalArgumentException("Ukupna vrednost fakture ne može biti negativan broj ili 0.");
 	    }
 	}
 

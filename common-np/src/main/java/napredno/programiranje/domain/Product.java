@@ -136,13 +136,13 @@ public class Product implements GenericEntity {
 	 * Postavlja kolicinu proizvoda na zadatu vrednost.
 	 *
 	 * @param quantity Kolicina proizvoda
-	 * @throws IllegalArgumentException Ako je quantity manja ili jednaka nuli
+	 * @throws IllegalArgumentException Ako je quantity manja od 0
 	 */
 	public void setQuantity(int quantity) {
 		if (quantity >= 0) {
 	        this.quantity = quantity;
 	    } else {
-	        throw new IllegalArgumentException("Količina proizvoda ne sme biti manja ili jednaka nuli.");
+	        throw new IllegalArgumentException("Količina proizvoda ne sme biti manja od 0.");
 	    }
 	}
 

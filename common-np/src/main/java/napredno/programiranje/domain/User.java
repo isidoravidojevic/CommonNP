@@ -5,220 +5,221 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
- * Predstavlja korisnika aplikacije (knjigovodju). Korisnik ima ime, prezime, 
- * korisnicko ime i sifru.
- * Klasa implementira GenericEntity interfejs i omogucava rad sa bazom podataka.
+ * Predstavlja korisnika aplikacije (knjigovodju). Korisnik ima ime, prezime,
+ * korisnicko ime i sifru. Klasa implementira GenericEntity interfejs i
+ * omogucava rad sa bazom podataka.
  * 
  * @author Isidora Vidojevic
  * 
  */
 
-public class User implements GenericEntity{
+public class User implements GenericEntity {
 
 	/**
 	 * Ime korisnika kao String.
 	 */
 	private String firstName;
-	
+
 	/**
 	 * Prezime korisnika kao String.
 	 */
-    private String lastName;
-    
-    /**
+	private String lastName;
+
+	/**
 	 * Korisnicko ime kao String.
 	 */
-    private String username;
-    
-    /**
+	private String username;
+
+	/**
 	 * Sifra kao String.
 	 */
-    private String password;
+	private String password;
 
-    /**
-     * Konstruktor bez parametara koji inicijalizuje objekat klase User.
-     */
-    public User() {
-    }
+	/**
+	 * Konstruktor bez parametara koji inicijalizuje objekat klase User.
+	 */
+	public User() {
+	}
 
-    /**
-     * Konstruktor koji inicijalizuje objekat klase User sa zadatim vrednostima.
-     *
-     * @param firstName Ime korisnika
-     * @param lastName Prezime korisnika
-     * @param username Korisnicko ime 
-     * @param password Sifra
-     * 
-     */
-    public User(String firstName, String lastName, String username, String password) {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setUsername(username);
-        setPassword(password);
-    }
-	
-    /**
-     * Vraca ime korisnika.
-     *
-     * @return Ime korisnika
-     */
-    public String getFirstName() {
-        return firstName;
-    }
+	/**
+	 * Konstruktor koji inicijalizuje objekat klase User sa zadatim vrednostima.
+	 *
+	 * @param firstName Ime korisnika
+	 * @param lastName  Prezime korisnika
+	 * @param username  Korisnicko ime
+	 * @param password  Sifra
+	 * 
+	 */
+	public User(String firstName, String lastName, String username, String password) {
+		setFirstName(firstName);
+		setLastName(lastName);
+		setUsername(username);
+		setPassword(password);
+	}
 
-    /**
-     * Vraca prezime korisnika.
-     *
-     * @return Prezime korisnika
-     */
-    public String getLastName() {
-        return lastName;
-    }
+	/**
+	 * Vraca ime korisnika.
+	 *
+	 * @return Ime korisnika
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
 
-    /**
-     * Vraca korisnicko ime korisnika.
-     *
-     * @return Korisnicko ime korisnika
-     */
-    public String getUsername() {
-        return username;
-    }
+	/**
+	 * Vraca prezime korisnika.
+	 *
+	 * @return Prezime korisnika
+	 */
+	public String getLastName() {
+		return lastName;
+	}
 
-    /**
-     * Vraca sifru korisnika.
-     *
-     * @return Sifra korisnika
-     */
-    public String getPassword() {
-        return password;
-    }
+	/**
+	 * Vraca korisnicko ime korisnika.
+	 *
+	 * @return Korisnicko ime korisnika
+	 */
+	public String getUsername() {
+		return username;
+	}
 
-    /**
-     * Postavlja ime korisnika na zadatu vrednost.
-     *
-     * @param firstName Ime korisnika
-     * @throws IllegalArgumentException Ako je firstName null ili prazan String
-     */
-    public void setFirstName(String firstName) {
-    	 if (firstName != null && !firstName.isEmpty()) {
-    	        this.firstName = firstName;
-    	    } else {
-    	        throw new IllegalArgumentException("Ime korisnika ne sme biti null ili prazan String.");
-    	    }
-    }
+	/**
+	 * Vraca sifru korisnika.
+	 *
+	 * @return Sifra korisnika
+	 */
+	public String getPassword() {
+		return password;
+	}
 
-    /**
-     * Postavlja prezime korisnika na zadatu vrednost.
-     *
-     * @param lastName Prezime korisnika
-     * @throws IllegalArgumentException Ako je lastName null ili prazan String
-     */
-    public void setLastName(String lastName) {
-    	if (lastName != null && !lastName.isEmpty()) {
-            this.lastName = lastName;
-        } else {
-            throw new IllegalArgumentException("Prezime korisnika ne sme biti null ili prazan String.");
-        }
-    }
+	/**
+	 * Postavlja ime korisnika na zadatu vrednost.
+	 *
+	 * @param firstName Ime korisnika
+	 * @throws IllegalArgumentException Ako je firstName null ili prazan String
+	 */
+	public void setFirstName(String firstName) {
+		if (firstName != null && !firstName.isEmpty()) {
+			this.firstName = firstName;
+		} else {
+			throw new IllegalArgumentException("Ime korisnika ne sme biti null ili prazan String.");
+		}
+	}
 
-    /**
-     * Postavlja korisnicko ime korisnika na zadatu vrednost.
-     *
-     * @param username Korisnicko ime korisnika
-     * @throws IllegalArgumentException Ako je username null ili prazan String
-     */
-    public void setUsername(String username) {
-    	if (username != null && !username.isEmpty()) {
-            this.username = username;
-        } else {
-            throw new IllegalArgumentException("Korisničko ime korisnika ne sme biti null ili prazan String.");
-        }
-    }
+	/**
+	 * Postavlja prezime korisnika na zadatu vrednost.
+	 *
+	 * @param lastName Prezime korisnika
+	 * @throws IllegalArgumentException Ako je lastName null ili prazan String
+	 */
+	public void setLastName(String lastName) {
+		if (lastName != null && !lastName.isEmpty()) {
+			this.lastName = lastName;
+		} else {
+			throw new IllegalArgumentException("Prezime korisnika ne sme biti null ili prazan String.");
+		}
+	}
 
-    /**
-     * Postavlja sifru korisnika na zadatu vrednost.
-     *
-     * @param password Sifra korisnika
-     * @throws IllegalArgumentException Ako je password null ili prazan String
-     */
-    public void setPassword(String password) {
-    	if (password != null && !password.isEmpty()) {
-            this.password = password;
-        } else {
-            throw new IllegalArgumentException("Šifra korisnika ne sme biti null ili prazan String.");
-        }
-    }
+	/**
+	 * Postavlja korisnicko ime korisnika na zadatu vrednost.
+	 *
+	 * @param username Korisnicko ime korisnika
+	 * @throws IllegalArgumentException Ako je username null ili prazan String
+	 */
+	public void setUsername(String username) {
+		if (username != null && !username.isEmpty()) {
+			this.username = username;
+		} else {
+			throw new IllegalArgumentException("Korisničko ime korisnika ne sme biti null ili prazan String.");
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
+	/**
+	 * Postavlja sifru korisnika na zadatu vrednost.
+	 *
+	 * @param password Sifra korisnika
+	 * @throws IllegalArgumentException Ako je password null ili prazan String
+	 */
+	public void setPassword(String password) {
+		if (password != null && !password.isEmpty()) {
+			this.password = password;
+		} else {
+			throw new IllegalArgumentException("Šifra korisnika ne sme biti null ili prazan String.");
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getTableName() {
 		return "user";
 	}
 
 	/**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String getInsertColumns() {
 		return "firstName, lastName, username, password";
 	}
 
 	/**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}
+	 */
 	@Override
-    public String getInsertValues() {
-        return "'" + firstName + "', '" + lastName + "', '" + username + "', '" + password + "'";
-    }
+	public String getInsertValues() {
+		return "'" + firstName + "', '" + lastName + "', '" + username + "', '" + password + "'";
+	}
 
 	/**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getUpdateValues() {
-        return "";
-    }
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getUpdateValues() {
+		return "";
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getJoinText() {
-        return "";
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getJoinText() {
+		return "";
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getSelectedText() {
-        return "";
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getSelectedText() {
+		return "";
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String getID() {
-        return "";
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String getID() {
+		return "";
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public GenericEntity getEntity(ResultSet rs) throws SQLException {
-        return new User(rs.getString(getTableName()+".firstName"), rs.getString(getTableName()+".lastName"), rs.getString(getTableName()+".username"), rs.getString(getTableName()+".password"));
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public GenericEntity getEntity(ResultSet rs) throws SQLException {
+		return new User(rs.getString(getTableName() + ".firstName"), rs.getString(getTableName() + ".lastName"),
+				rs.getString(getTableName() + ".username"), rs.getString(getTableName() + ".password"));
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setId(long id) {
-        
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setId(long id) {
+
+	}
 
 }

@@ -33,10 +33,30 @@ class UserTest {
 	}
 
 	@Test
+    public void testSetFirstNameNull() {
+        assertThrows(IllegalArgumentException.class, () -> u.setFirstName(null));
+    }
+
+    @Test
+    public void testSetFirstNameEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> u.setFirstName(""));
+    }
+	
+	@Test
 	void testSetLastName() {
 		u.setLastName("Vidojevic");
 		assertEquals("Vidojevic", u.getLastName());
 	}
+	
+	@Test
+    public void testSetLastNameNull() {
+        assertThrows(IllegalArgumentException.class, () -> u.setLastName(null));
+    }
+
+    @Test
+    public void testSetLastNameEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> u.setLastName(""));
+    }
 	
 	@Test
 	void testSetUsername() {
@@ -45,10 +65,30 @@ class UserTest {
 	}
 	
 	@Test
+    public void testSetUsernameNull() {
+        assertThrows(IllegalArgumentException.class, () -> u.setUsername(null));
+    }
+
+    @Test
+    public void testSetUsernameEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> u.setUsername("")); 
+    }
+	
+	@Test
 	void testSetPassword() {
 		u.setPassword("isidora");
 		assertEquals("isidora", u.getPassword());
 	}
+	
+	@Test
+    public void testSetPasswordNull() {
+        assertThrows(IllegalArgumentException.class, () -> u.setPassword(null));
+    }
+
+    @Test
+    public void testSetPasswordEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> u.setPassword(""));
+    }
 	
 	@Test
 	public void testGetTableName() {
